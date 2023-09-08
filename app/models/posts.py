@@ -12,7 +12,7 @@ class Post(db.Model):
     title = db.Column(db.String(50), nullable=False)
     body = db.Column(db.String(2500), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    topic = db.Column(db.String(50), db.ForeignKey(add_prefix_for_prod("topics.topic")), nullable=False)
+    topicId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("topics.id")), nullable=False)
 
     users = db.relationship("User", back_populates="posts")
     topics = db.relationship("Topic", back_populates="posts")
