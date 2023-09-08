@@ -14,9 +14,9 @@ class Post(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     topic = db.Column(db.String(50), db.ForeignKey(add_prefix_for_prod("topics.topic")), nullable=False)
 
-    users = db.Relationship("User", back_populates="posts")
-    topics = db.Relationship("Topic", back_populates="posts")
-    comments = db.Relationship("Comment", back_populates="posts", cascade="all, delete-orphan")
+    users = db.relationship("User", back_populates="posts")
+    topics = db.relationship("Topic", back_populates="posts")
+    comments = db.relationship("Comment", back_populates="posts", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

@@ -11,7 +11,7 @@ class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topic = db.Column(db.String(50), nullable=False)
 
-    posts = db.Relationship("Post", back_populates="topics", cascade="all, delete-orphan")
+    posts = db.relationship("Post", back_populates="topics", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

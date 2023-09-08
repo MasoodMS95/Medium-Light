@@ -13,8 +13,8 @@ class Comment(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     comment = db.Column(db.String(255), nullable=False)
 
-    posts = db.Relationship("Post", back_populates="comments")
-    users = db.Relationship("User", back_populates="comments")
+    posts = db.relationship("Post", back_populates="comments")
+    users = db.relationship("User", back_populates="comments")
 
     def to_dict(self):
         return {
