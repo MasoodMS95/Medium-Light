@@ -12,7 +12,12 @@ def topics():
     Query for all topics and returns them in a list of topic dictionaries
     """
     topics = Topic.query.all()
-    return {'topics': [topic.to_dict() for topic in topics]}
+    tObj = {}
+    tObj['topics']={}
+    for topic in topics:
+      t = topic.to_dict()
+      tObj['topics'][t['id']] = t
+    return tObj
 
 
 @topic_routes.route('/<int:id>')
