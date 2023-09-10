@@ -24,5 +24,5 @@ class Post(db.Model):
           'title':self.title,
           'body':self.body,
           'userId':self.userId,
-          'topic':self.topic
+          'topicId':self.topicId
         }
