@@ -3,7 +3,7 @@ from wtforms import StringField, SelectField, SubmitField, IntegerField, FormFie
 from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import Post
 
-class postForm(FlaskForm):
+class newPostForm(FlaskForm):
   title = StringField("Title", validators=[DataRequired()])
   body = StringField("Body", validators=[DataRequired()])
   userId = IntegerField("UserId", validators=[DataRequired()])
@@ -15,4 +15,15 @@ class postForm(FlaskForm):
       'body': self.body.data,
       'userId': self.userId.data,
       'topicId': self.topicId.data
+    }
+
+
+class editPostForm(FlaskForm):
+  title = StringField("Title", validators=[DataRequired()])
+  body = StringField("Body", validators=[DataRequired()])
+
+  def to_dict(self):
+    return{
+      'title': self.title.data,
+      'body': self.body.data
     }

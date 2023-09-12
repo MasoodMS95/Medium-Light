@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Post, Comment, db
-from ..forms import postForm
+from ..forms import newPostForm, editPostForm
 from sqlalchemy import func
 
 post_routes = Blueprint('posts', __name__)
@@ -37,7 +37,7 @@ def createNewPost():
   Creates a new post.
   """
   request_data=request.get_json()
-  form = postForm()
+  form = newPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
   if form.validate_on_submit():
@@ -58,7 +58,7 @@ def editPost(id):
   Edits a post.
   """
   request_data=request.get_json()
-  form = postForm()
+  form = editPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
   if form.validate_on_submit():
@@ -66,8 +66,6 @@ def editPost(id):
     if postToEdit:
       postToEdit.title = data["title"]
       postToEdit.body = data["body"]
-      postToEdit.userId = data["userId"]
-      postToEdit.topicId = data["topicId"]
       postToEdit.updated_at = func.now()
       db.session.commit()
       return postToEdit.to_dict()
