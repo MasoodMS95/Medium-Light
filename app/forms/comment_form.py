@@ -3,7 +3,7 @@ from wtforms import StringField, SelectField, SubmitField, IntegerField, FormFie
 from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import Comment
 
-class commentForm(FlaskForm):
+class newCommentForm(FlaskForm):
   postId = IntegerField("PostId", validators=[DataRequired()])
   userId = IntegerField("UserId", validators=[DataRequired()])
   comment = StringField("Comment", validators=[DataRequired()])
@@ -12,5 +12,13 @@ class commentForm(FlaskForm):
     return{
       'postId': self.postId.data,
       'userId': self.userId.data,
+      'comment': self.comment.data
+    }
+
+class editCommentForm(FlaskForm):
+  comment = StringField("Comment", validators=[DataRequired()])
+
+  def to_dict(self):
+    return{
       'comment': self.comment.data
     }
