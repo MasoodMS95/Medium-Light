@@ -63,13 +63,15 @@ def editPost(id):
   data = form.data
   if form.validate_on_submit():
     postToEdit = Post.query.get(id)
-    postToEdit.title = data["title"]
-    postToEdit.body = data["body"]
-    postToEdit.userId = data["userId"]
-    postToEdit.topicId = data["topicId"]
-    postToEdit.updated_at = func.now()
-    db.session.commit()
-    return postToEdit.to_dict()
+    if postToEdit:
+      postToEdit.title = data["title"]
+      postToEdit.body = data["body"]
+      postToEdit.userId = data["userId"]
+      postToEdit.topicId = data["topicId"]
+      postToEdit.updated_at = func.now()
+      db.session.commit()
+      return postToEdit.to_dict()
+    return {'error' : 'Post not found'}
   return {"errors":form.errors}, 401
 
 @post_routes.route('/<int:id>', methods=['DELETE'])

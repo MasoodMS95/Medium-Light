@@ -6,7 +6,6 @@ topic_routes = Blueprint('topics', __name__)
 
 
 @topic_routes.route('/')
-@login_required
 def topics():
     """
     Query for all topics and returns them in a list of topic dictionaries
@@ -21,10 +20,11 @@ def topics():
 
 
 @topic_routes.route('/<int:id>')
-@login_required
 def topic(id):
     """
     Query for a topic by id and returns that topic in a dictionary
     """
     topic = Topic.query.get(id)
-    return topic.to_dict()
+    if topic:
+      return topic.to_dict()
+    return jsonify({'error': 'Topic not found'}), 404
