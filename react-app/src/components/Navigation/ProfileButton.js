@@ -45,11 +45,30 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <div className="profileButtonsTop profileButtons">
+              <button onClick={() => {window.alert("Feature coming soon.")}}>
+                <i className="fa-regular fa-user icon"></i>
+                Profile
+              </button>
+              <button onClick={() => {window.alert("Feature coming soon.")}}>
+                <i className="fa-regular fa-bookmark icon"></i>
+                Library
+              </button>
+              <button onClick={() => {window.alert("Feature coming soon.")}}>
+                <i className="fa-solid fa-receipt icon"></i>
+                Stories
+              </button>
+              <button onClick={() => {window.alert("Feature coming soon.")}}>
+                <i className="fa-solid fa-chart-simple icon"></i>
+                Stats
+              </button>
+            </div>
+            <div className="profileButtonsMid profileButtons">
+
+            </div>
+            <div className="profileButtonsBottom profileButtons">
+            <button onClick={handleLogout}>Log Out</button>
+            </div>
           </>
         ) : (
           <>
