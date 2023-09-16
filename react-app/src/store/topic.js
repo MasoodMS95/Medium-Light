@@ -41,7 +41,7 @@ export default function topicReducer(state = initialState, action) {
 	let stateCopy = cloneDeep(state);
   switch (action.type) {
 		case GET_ALL_TOPICS:
-			stateCopy.allTopics = action.payload;
+			stateCopy.allTopics = action.payload.topics;
       return stateCopy;
 		case GET_SINGLE_TOPIC:
       stateCopy.singleTopic = action.payload;
