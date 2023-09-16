@@ -9,6 +9,7 @@ function PostComponent(){
   const [isEdit, setIsEdit] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [topicId, setTopicId] = useState("")
   const [errors, setErrors] = useState({})
   const [isLoaded, setIsLoaded] = useState(false);
   const history = useHistory();
@@ -72,6 +73,7 @@ function PostComponent(){
   useEffect(()=>{console.log(topics)}, [topics])
   useEffect(()=>{console.log("Title",title)}, [title])
   useEffect(()=>{console.log("Body",body)}, [body])
+  useEffect(()=>{console.log("TopicId",topicId)}, [topicId])
 
 
   async function submitHandler(e){
@@ -83,9 +85,15 @@ function PostComponent(){
     if(title.length > 50 || title.length <= 0){
       errObj.title = true;
     }
+    if(!isEdit && (topicId === "")){
+      errObj.topic = true;
+    }
     setErrors(errObj);
     if(Object.values(errObj).length){
       return;
+    }
+    if(isEdit){
+      
     }
   };
 
@@ -116,9 +124,24 @@ function PostComponent(){
             {errors.body && <p className="errors">Body is required and has to be less than 2500 characters</p>}
             <p className={errors.body?"errors":""}>{body.length} character(s)</p>
           </div>
-          <select>
-            
-          </select>
+          {!isEdit && (
+           <div>
+           <select
+              onChange={(e)=>setTopicId(e.target.value)}
+            >
+              <option
+                value=""
+              >Select a topic</option>
+              {Object.values(topics).map(topic =>(
+                <option
+                  key={topic.id}
+                  value={topic.id}
+                >{topic.topic}</option>
+              ))}
+            </select>
+            {errors.topic && <p className="errors">Topic must be selected</p>}
+           </div>
+          )}
           <button>Submit</button>
         </form>
       )}
