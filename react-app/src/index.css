@@ -2,3 +2,11 @@
 button{
   cursor: pointer;
 }
+
+p.errors{
+  color:red;
+}
+
+body{
+  box-sizing: border-box;
+}

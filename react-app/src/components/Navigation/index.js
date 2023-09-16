@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
           </>
         )}
         {isLoaded && sessionUser && (
-          <button className='clearButton'>Write</button>
+          <button className='clearButton' onClick={()=>history.push('/post/new')}>Write</button>
         )}
         {isLoaded && (
           <ProfileButton user={sessionUser} />
