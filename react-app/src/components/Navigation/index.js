@@ -16,6 +16,7 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">
           <img src={logoImg} id="logoImage" alt="Logo" />
         </NavLink>
+        <span id="siteName">Medium Light</span>
         {isLoaded && sessionUser && (
           <div className='searchBar'>
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -32,10 +33,16 @@ function Navigation({ isLoaded }){
           </>
         )}
         {isLoaded && sessionUser && (
-          <button className='clearButton' onClick={()=>history.push('/post/new')}>Write</button>
+          <React.Fragment>
+            <button className='clearButton' onClick={()=>history.push('/post/new')}>Write</button>
+            <ProfileButton user={sessionUser} />
+          </React.Fragment>
         )}
-        {isLoaded && (
-          <ProfileButton user={sessionUser} />
+        {isLoaded && !sessionUser && (
+          <React.Fragment>
+            <button className='clearButton' onClick={()=>history.push('/login')}>Log in</button>
+            <button className='clearButton' onClick={()=>history.push('/signup')}>Sign up</button>
+          </React.Fragment>
         )}
       </div>
     </div>
