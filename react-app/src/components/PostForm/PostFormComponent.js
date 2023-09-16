@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTopicsThunk } from "../../store/topic";
 import { useHistory, useParams } from "react-router-dom";
-import { getSinglePostThunk } from "../../store/post";
-import "./PostComponent.css"
+import { createPostThunk, editPostThunk, getSinglePostThunk } from "../../store/post";
+import "./PostFormComponent.css"
 
 function PostComponent(){
   const [isEdit, setIsEdit] = useState(false);
@@ -92,9 +92,25 @@ function PostComponent(){
     if(Object.values(errObj).length){
       return;
     }
+    let res;
     if(isEdit){
-      
+      let reqBody = {
+        title: title,
+        body: body
+      }
+      res = await dispatch(editPostThunk(reqBody, id))
     }
+    else{
+      let reqBody = {
+        title: title,
+        body: body,
+        userId: user.id,
+        topicId: topicId
+      }
+      res = await dispatch(createPostThunk(reqBody))
+    }
+    console.log(res);
+    history.push('/')
   };
 
   return (

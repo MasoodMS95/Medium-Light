@@ -38,6 +38,37 @@ export const getSinglePostThunk = (id) => async (dispatch) => {
   }
 }
 
+export const createPostThunk = (req) => async (dispatch) =>{
+  let res = await fetch('/api/posts/new', {
+    method: 'POST',
+    headers: {
+			"Content-Type": "application/json",
+		},
+    body: JSON.stringify(req),
+  })
+  console.log(res);
+  if(res.ok){
+    let data = await res.json();
+    dispatch(getSinglePost(data))
+    return data;
+  }
+}
+
+export const editPostThunk = (req, id) => async (dispatch) =>{
+  let res = await fetch(`/api/posts/edit/${id}`, {
+    method: 'PUT',
+    headers: {
+			"Content-Type": "application/json",
+		},
+    body: JSON.stringify(req),
+  })
+  if(res.ok){
+    let data = await res.json();
+    dispatch(getSinglePost(data))
+    return data;
+  }
+}
+
 const initialState = {allPosts: [], singlePost: null}
 
 //Reducer
