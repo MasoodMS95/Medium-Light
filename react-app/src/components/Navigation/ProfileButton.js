@@ -46,6 +46,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <div className="profileButtonsTop profileButtons">
+              <span>{user.email}</span>
               <button onClick={() => {window.alert("Feature coming soon.")}}>
                 <i className="fa-regular fa-user icon"></i>
                 Profile
