@@ -76,7 +76,7 @@ export default function postReducer(state = initialState, action){
   let stateCopy = cloneDeep(state);
   switch (action.type){
     case GET_ALL_POSTS:
-      stateCopy.allPosts = action.payload;
+      stateCopy.allPosts = action.payload.posts;
       return stateCopy;
     case GET_SINGLE_POSTS:
       stateCopy.singlePost = action.payload;
