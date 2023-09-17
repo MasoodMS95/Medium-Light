@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Post, Comment, db
+from app.models import Post, Comment, db, User
 from ..forms import newPostForm, editPostForm
 from sqlalchemy import func
 
@@ -23,9 +23,19 @@ def singlePost(id):
     """
     post = Post.query.get(id)
     if post:
-      comments = Comment.query.filter_by(postId=id).all()
-      comments_data = [comment.to_dict() for comment in comments]
-      response_data = post.to_dict()
+      postOwner = User.query.filter_by(id=post.userId).first()
+      comments = db.session.query(Comment, User.username).join(User, Comment.userId == User.id).all()
+      comments_data = [
+          {
+              'userId':comment.userId,
+              'comment': comment.comment,
+              'username': username,
+
+          }
+          for comment, username in comments
+      ]
+      response_data=post.to_dict()
+      response_data['ownersUserName'] = postOwner.username
       response_data['comments'] = comments_data
       return jsonify(response_data)
     return jsonify({'error': 'Post not found'}), 404
