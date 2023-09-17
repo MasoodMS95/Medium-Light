@@ -69,6 +69,19 @@ export const editPostThunk = (req, id) => async (dispatch) =>{
   }
 }
 
+export const deletePostThunk = (id) => async (dispatch) =>{
+  let res = await fetch(`/api/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+			"Content-Type": "application/json",
+		}
+  })
+  if(res.ok){
+    return {message:'Success'}
+  }
+  return {error: 'Something went wrong'}
+}
+
 const initialState = {allPosts: [], singlePost: null}
 
 //Reducer
