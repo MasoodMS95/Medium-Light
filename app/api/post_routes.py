@@ -24,20 +24,11 @@ def singlePost(id):
     post = Post.query.get(id)
     if post:
       postOwner = User.query.filter_by(id=post.userId).first()
-      comments = db.session.query(Comment, User.username).join(User, Comment.userId == User.id).all()
-      comments_data = [
-          {
-              'userId':comment.userId,
-              'comment': comment.comment,
-              'username': username,
-              'commentId':comment.id
-
-          }
-          for comment, username in comments
-      ]
       response_data=post.to_dict()
+      for comment in response_data['comments']:
+        user = User.query.get(comment['userId']).to_dict()
+        comment['username'] = user['username']
       response_data['ownersUserName'] = postOwner.username
-      response_data['comments'] = comments_data
       return jsonify(response_data)
     return jsonify({'error': 'Post not found'}), 404
 
