@@ -30,6 +30,7 @@ def singlePost(id):
               'userId':comment.userId,
               'comment': comment.comment,
               'username': username,
+              'commentId':comment.id
 
           }
           for comment, username in comments
