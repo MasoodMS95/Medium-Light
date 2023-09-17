@@ -50,8 +50,8 @@ function PostComponent(){
   //Set body and title for editing existing data.
   useEffect(()=>{
     if(post && isEdit){
-      if(post.userId !== user.id){
-        window.alert("You do not have permission to modify this post.")
+      if(post.userId !== user?.id || !user){
+        window.alert("You do not have permission to modify this post")
         history.push("/")
         return;
       }
@@ -59,6 +59,13 @@ function PostComponent(){
       setBody(post.body);
     }
   }, [post])
+
+  useEffect(()=>{
+    if(!user){
+      window.alert("You need to be logged in to make a post")
+      history.push("/")
+    }
+  }, [])
 
   //Get all topics
   useEffect(()=>{
@@ -110,7 +117,7 @@ function PostComponent(){
       res = await dispatch(createPostThunk(reqBody))
     }
     console.log(res);
-    history.push('/')
+    history.push(`/post/${res.id}`)
   };
 
   return (
