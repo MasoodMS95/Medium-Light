@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -11,7 +11,6 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,36 +20,40 @@ function LoginFormPage() {
     }
   };
 
+  useEffect(()=>{
+    console.log(errors)
+  }, [errors])
+  if (sessionUser) return <Redirect to="/" />;
+
   return (
-    <>
+    <div className="loginPage">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <div className="loginButtons">
+          <label>
+            {"Email: "}
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          {errors[0] && <p className="errors">{errors[0].split(": ")[1]}</p>}
+          <label>
+            {"Password: "}
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {errors[1] && <p className="errors">{errors[1].split(": ")[1]}</p>}
+        </div>
         <button type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

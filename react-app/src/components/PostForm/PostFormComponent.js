@@ -65,7 +65,7 @@ function PostComponent(){
       window.alert("You need to be logged in to make a post")
       history.push("/")
     }
-  }, [])
+  }, [user])
 
   //Get all topics
   useEffect(()=>{
