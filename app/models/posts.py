@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from sqlalchemy import func
 
 
 class Post(db.Model):
@@ -13,6 +13,8 @@ class Post(db.Model):
     body = db.Column(db.String(2500), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     topicId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("topics.id")), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=func.now())
 
     users = db.relationship("User", back_populates="posts")
     topics = db.relationship("Topic", back_populates="posts")
@@ -24,5 +26,8 @@ class Post(db.Model):
           'title':self.title,
           'body':self.body,
           'userId':self.userId,
-          'topic':self.topic
+          'topicId':self.topicId,
+          'createdAt': self.created_at,
+          'updatedAt': self.updated_at,
+          'comments': [comment.to_dict() for comment in self.comments]
         }

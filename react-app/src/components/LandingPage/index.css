@@ -1,0 +1,14 @@
+.allPosts{
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  width: 60%;
+}
+
+.postBox{
+  border-top: 1px solid black;
+}
+
+.postBox:hover{
+  cursor: pointer;
+}

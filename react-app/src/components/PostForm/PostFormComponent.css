@@ -1,0 +1,40 @@
+.postForm{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 20px;
+  width: 40%;
+}
+
+.postForm p{
+  margin:0px;
+}
+
+.postForm{
+  text-align: center;
+}
+
+.postForm textarea{
+  height: 200px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.postForm button{
+  width: 80px;
+  margin: auto;
+}
+
+.postForm h3{
+  margin:0px;
+  text-align: center;
+}
+
+.formBody{
+  width: 100%;
+}
+
+.formTitle{
+  align-self: center;
+}
