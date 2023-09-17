@@ -1,7 +1,7 @@
 import React from "react"
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
-import { deletePostThunk, getAllPostsThunk } from "../../store/post";
+import { deletePostThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
 
 function DeletePost({id}){
