@@ -28,9 +28,16 @@ function EditComment({commentId, postId}){
         comment: editedComment
       }),
     })
-    closeModal();
-    window.alert("Comment updated!")
-    dispatch(getSinglePostThunk(postId))
+    if(res.ok){
+      closeModal();
+      window.alert("Comment updated!")
+      dispatch(getSinglePostThunk(postId))
+      return;
+    }
+    else{
+      window.alert("Something went wrong? This is awkward.")
+      return;
+    }
   }
   return (
     <form className="editCommentBox" onSubmit={(e) => submitEditedComment(e)}>
