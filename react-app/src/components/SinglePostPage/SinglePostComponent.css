@@ -1,0 +1,25 @@
+.singlePost{
+  width:50%;
+  margin:auto;
+}
+
+.postHeader > p{
+  margin-top:5px;
+  margin-bottom:2px;
+}
+
+.postHeader > h3{
+  margin-top: 5px;
+  text-decoration: underline;
+}
+
+.postActionButtons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.postActionButtons button{
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
