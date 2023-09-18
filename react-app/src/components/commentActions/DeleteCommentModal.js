@@ -3,6 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { getSinglePostThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
+import "./DeleteCommentModal.css"
 
 function DeleteComment({commentId, postId}){
 

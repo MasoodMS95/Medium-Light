@@ -1,0 +1,14 @@
+.postActionConfirmationButtons{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+.greenButton{
+  background-color: green;
+  color: white;
+}
+
+.redButton{
+  background-color: red;
+  color:white;
+}
