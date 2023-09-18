@@ -1,6 +1,6 @@
 # Medium Light
 
-Medium Light is a hybrid of Medium.com and classic open communication sites like Reddit, 4chan, and AIM. The sites goal is to promote conversation with EVERYONE on the site, not just people you follow and subscribe to, with the latest posts shown being the ones that have the most activity.
+Medium Light is a hybrid of Medium.com and classic open communication sites like Reddit, 4chan, and AIM. The sites goal is to promote conversation with EVERYONE on the site, not just people you follow and subscribe to, with the latest posts shown being the ones that have the most activity. All presented with a classic retro look.
 
 # Live Link
 https://medium-light.onrender.com
