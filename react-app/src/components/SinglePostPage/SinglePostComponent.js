@@ -127,12 +127,12 @@ function SinglePostComponent(){
                 {user?.id === comment.userId &&
                   <div className="commentActions">
                     <OpenModalButton
-                      buttonText="Edit comment"
+                      buttonText="EDIT COMMENT"
                       onItemClick={closeModal}
                       modalComponent={<EditComment commentId={comment?.id} postId={post?.id}/>}
                     />
                     <OpenModalButton
-                      buttonText="Delete comment"
+                      buttonText="DELETE COMMENT"
                       onItemClick={closeModal}
                       modalComponent={<DeleteComment commentId={comment?.id} postId={post?.id}/>}
                     />
