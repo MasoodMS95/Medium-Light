@@ -1,148 +1,159 @@
-# Flask React Project
+# Medium Light
 
-This is the starter for the Flask React project.
+Medium Light is a hybrid of Medium.com and classic open communication sites like Reddit, 4chan, and AIM. The sites goal is to promote conversation with EVERYONE on the site, not just people you follow and subscribe to, with the latest posts shown being the ones that have the most activity.
 
-## Getting started
-1. Clone this repository (only this branch)
+# Live Link
+https://medium-light.onrender.com
 
-2. Install dependencies
+## Tech Stack
+### Frameworks and Libraries
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+ ### Database:
+ ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+ ### Hosting:
+ ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+# Index
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+[Feature List](https://github.com/MasoodMS95/Medium-Light/wiki/MVP-Feature-List) | [Database Schema](https://github.com/MasoodMS95/Medium-Light/wiki/Database-Schema-Image) | [User Stories](https://github.com/MasoodMS95/Medium-Light/wiki/User-Stories) | [Wireframes](https://github.com/MasoodMS95/Medium-Light/wiki/Wireframe)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+# Landing Page
 
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+![Alt text](image.png)
 
 
-## Deployment through Render.com
+ # Article Page
+![Alt text](image-1.png)
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+# New Article Page
+![Alt text](image-2.png)
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
 
-### Part A: Configure the Start and Build Commands
+# Endpoints
 
-Start by giving your application a name.
+## AUTH
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+### Sign up
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `POST /api/auth/signup` | Create a new user account.           | `{"email": "user@example.com", "id": 1, "username": "user"}` |
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+### Login
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `POST /api/auth/login` | Authenticate and log in a user.     | `{"email": "user@example.com", "id": 1, "username": "user"}` |
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
+### Logout
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/auth/logout` | Log out the currently authenticated user. | `{"message": "User logged out"}` |
 
-Now, add your start command in the Start field:
+### Get all users
 
-```shell
-# start script
-gunicorn app:app
-```
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/users/` | Retrieve a list of all users.        | `{"users": [{"email": "user@example.com", "id": 1, "username": "user"}]}` |
 
-_If you are using websockets, use the following start command instead for increased performance:_
+### Get current user
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/auth`   | Retrieve information about the currently authenticated user. | `{"email": "user@example.com", "id": 1, "username": "user"}` |
 
-### Part B: Add the Environment Variables
+## TOPICS
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+### Get all topics
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/topics` | Retrieve a list of all topics.      | `{"topics": {"1": {"id": 1, "topic": "Art"}}}` |
 
-Add the following keys and values in the Render GUI form:
+### Get single topic
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/topics/:id` | Retrieve information about a single topic by its ID. | `{"id": 1, "topic": "topic"}` |
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+## POSTS
 
-Add the following keys and values:
+### Get all posts
 
-- DATABASE_URL (copy value from Internal Database URL field)
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/posts`  | Retrieve a list of all posts.        | `{"posts": [{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}]}` |
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
+### Get single post
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `GET /api/posts/:id` | Retrieve information about a single post by its ID. | `{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
+### Create a post
 
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `POST /api/posts/new` | Create a new post.                  | `{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+### Edit a post
+
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `PUT /api/posts/edit/:id` | Edit an existing post.          | `{"body": "Updated body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Updated Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+
+### Delete a post
+
+| Request           | Purpose                              | Response                                |
+| ----------------- | ------------------------------------ | --------------------------------------- |
+| `DELETE /api/posts/:id` | Delete a post by its ID.         | `{"message": "Post deleted"}` |
+
+## COMMENTS
+
+### Get all comments
+
+| Request                | Purpose                                      | Response                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------- |
+| `GET /api/comments`    | Retrieve a list of all comments.             | `{"comments": [{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}]}` |
+
+### Get single comment
+
+| Request                | Purpose                                      | Response                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------- |
+| `GET /api/comments/:id` | Retrieve information about a single comment by its ID. | `{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+
+### Create a comment
+
+| Request                | Purpose                                      | Response                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------- |
+| `POST /api/comments/new` | Create a new comment.                       | `{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+
+### Edit a comment
+
+| Request                | Purpose                                      | Response                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------- |
+| `PUT /api/comments/edit/:id` | Edit an existing comment.              | `{"comment": "Updated Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+
+### Delete a comment
+
+| Request                | Purpose                                      | Response                                |
+| ---------------------- | -------------------------------------------- | --------------------------------------- |
+| `DELETE /api/comments/:id` | Delete a comment by its ID.             | `{"message": "Comment deleted"}` |
+
+# Feature List
+1. User Accounts
+2. Posts
+3. Comments
+
+# Future Implementation Goals
+
+1. Voting
+2. AWS Images
+
+# Connect
+[LinkedIn](https://www.linkedin.com/in/masoodms/)
