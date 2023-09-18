@@ -45,7 +45,7 @@ function SinglePostComponent(){
       setSortedComments([])
     }
   }, [post])
-  
+
   //Sort comments by most recently updated
   const sortComments = (a, b) => {
     const dateA = new Date(a.updatedAt);
@@ -145,7 +145,8 @@ function SinglePostComponent(){
                 }
               </div>
             ))}
-            {!post.comments.length && <p>Looks like there's no comments, be the first to comment!</p>}
+            {!post.comments.length && user && <p>Looks like there's no comments, be the first to comment!</p>}
+            {!post.comments.length && !user && <p>Looks like there's no comments, login to make the first comment!</p>}
           </div>
         </div>
       )}

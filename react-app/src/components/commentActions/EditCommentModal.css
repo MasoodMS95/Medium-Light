@@ -1,0 +1,15 @@
+.editCommentBox{
+  display: flex;
+  flex-direction: column;
+}
+
+.editCommentBox p{
+  text-align: center;
+}
+
+.editCommentBox>textarea{
+  height: 80px;
+  width: 500px;
+  resize:none;
+  outline:none;
+}

@@ -1,0 +1,32 @@
+.signupPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+}
+
+.signupForm{
+  align-content: center;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
+.signupFields{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.signupPage p{
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+#signupConfirm{
+  width: 100px;
+  margin: auto;
+  justify-self: center;
+}

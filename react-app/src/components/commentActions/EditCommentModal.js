@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { getSinglePostThunk } from "../../store/post";
+import "./EditCommentModal.css";
 
 function EditComment({commentId, postId}){
   const [editedComment, setEditedComment] = useState("");
   const [commentError, setCommentError] = useState({})
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+
+  useEffect(()=>{
+    const setComment = async () => {
+      let res = await fetch(`/api/comments/${commentId}`)
+      let data = await res.json();
+      setEditedComment(data.comment);
+    }
+    setComment();
+  }, [])
 
   const submitEditedComment = async (e) =>{
     e.preventDefault();
@@ -41,7 +51,7 @@ function EditComment({commentId, postId}){
   }
   return (
     <form className="editCommentBox" onSubmit={(e) => submitEditedComment(e)}>
-      <label>New comment</label>
+      <label>Edit comment</label>
       <textarea
         value={editedComment}
         placeholder="Add your throughts to the discussion"

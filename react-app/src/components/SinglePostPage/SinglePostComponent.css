@@ -31,14 +31,15 @@
 }
 
 .newCommentBox{
+  border-bottom: solid black 1px;
+  border-top: solid black 1px;
   display: flex;
   flex-direction: column;
-  border-top: solid black 1px;
-  border-bottom: solid black 1px;
 }
 
 .newCommentBox>textarea{
-  height: 150px;
+  height: 70px;
+  resize:none;
   outline:none;
 }
 
@@ -55,4 +56,25 @@
 .comment{
   border-bottom:1px solid black;
   padding-bottom: 10px;
+}
+
+.comment p{
+  text-wrap: wrap;
+  word-break: break-all;
+}
+
+.commentActions{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.commentActions button{
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.commentActions button:hover{
+  font-weight: bold;
+  text-decoration: underline;
 }

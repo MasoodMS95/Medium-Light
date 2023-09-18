@@ -38,6 +38,11 @@
   cursor: pointer;
 }
 
+.clearButton:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .searchBar{
   align-items: center;
   border: solid 1px black;

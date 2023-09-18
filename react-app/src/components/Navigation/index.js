@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+  const [searchField, setSearchField] = useState("");
   const history = useHistory();
 
   return (
@@ -20,7 +21,15 @@ function Navigation({ isLoaded }){
         {isLoaded && sessionUser && (
           <div className='searchBar'>
             <i className="fa-solid fa-magnifying-glass"></i>
-            <input placeholder='Search Medium Light'></input>
+            <input
+            value={searchField}
+            onChange={(e)=>setSearchField(e.target.value)}
+            onKeyDown={(event)=> {
+              if(event.key==='Enter'){
+                window.alert("Feature coming soon.");
+                setSearchField("");
+              }
+            }} placeholder='Search Medium Light'></input>
           </div>
         )}
       </div>
