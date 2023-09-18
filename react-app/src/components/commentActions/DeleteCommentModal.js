@@ -24,8 +24,8 @@ function DeleteComment({commentId, postId}){
       closeModal();
       window.alert("Something went wrong, this is awkward.")
     }
-    window.alert("Comment deleted!")
     closeModal();
+    window.alert("Comment deleted!")
   }
   return(
     <React.Fragment>
