@@ -41,7 +41,11 @@ function SinglePostComponent(){
       setSortedComments(sorted);
       setIsCommentsSorted(true);
     }
-  })
+    else{
+      setSortedComments([])
+    }
+  }, [post])
+  
   //Sort comments by most recently updated
   const sortComments = (a, b) => {
     const dateA = new Date(a.updatedAt);
