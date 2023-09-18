@@ -17,7 +17,7 @@ https://medium-light.onrender.com
 
 # Index
 
-[Feature List](https://github.com/MasoodMS95/Medium-Light/wiki/MVP-Feature-List) | [Database Schema](https://github.com/MasoodMS95/Medium-Light/wiki/Database-Schema-Image) | [User Stories](https://github.com/MasoodMS95/Medium-Light/wiki/User-Stories) | [Wireframes](https://github.com/MasoodMS95/Medium-Light/wiki/Wireframe)
+[MVP Feature List](https://github.com/MasoodMS95/Medium-Light/wiki/MVP-Feature-List) | [Database Schema](https://github.com/MasoodMS95/Medium-Light/wiki/Database-Schema-Image) | [User Stories](https://github.com/MasoodMS95/Medium-Light/wiki/User-Stories) | [Wireframes](https://github.com/MasoodMS95/Medium-Light/wiki/Wireframe)
 
 # Landing Page
 
@@ -39,111 +39,111 @@ https://medium-light.onrender.com
 
 ### Sign up
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `POST /api/auth/signup` | Create a new user account.           | `{"email": "user@example.com", "id": 1, "username": "user"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `POST /api/auth/signup` | Create a new user account.           | `{"email": "string", "id": int, "username": "string"}` |
 
 ### Login
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `POST /api/auth/login` | Authenticate and log in a user.     | `{"email": "user@example.com", "id": 1, "username": "user"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `POST /api/auth/login` | Authenticate and log in a user.     | `{"email": "string", "id": int, "username": "string"}` |
 
 ### Logout
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/auth/logout` | Log out the currently authenticated user. | `{"message": "User logged out"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/auth/logout` | Log out the currently authenticated user. | `{"message": "string"}` |
 
 ### Get all users
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/users/` | Retrieve a list of all users.        | `{"users": [{"email": "user@example.com", "id": 1, "username": "user"}]}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/users/` | Retrieve a list of all users.        | `{"users": [{"email": "string", "id": int, "username": "string"}]}` |
 
 ### Get current user
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/auth`   | Retrieve information about the currently authenticated user. | `{"email": "user@example.com", "id": 1, "username": "user"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/auth`   | Retrieve information about the currently authenticated user. | `{"email": "string", "id": int, "username": "string"}` |
 
 ## TOPICS
 
 ### Get all topics
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/topics` | Retrieve a list of all topics.      | `{"topics": {"1": {"id": 1, "topic": "Art"}}}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/topics` | Retrieve a list of all topics.      | `{"topics": {"1": {"id": int, "topic": "string"}}}` |
 
 ### Get single topic
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/topics/:id` | Retrieve information about a single topic by its ID. | `{"id": 1, "topic": "topic"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/topics/:id` | Retrieve information about a single topic by its ID. | `{"id": int, "topic": "string"}` |
 
 ## POSTS
 
 ### Get all posts
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/posts`  | Retrieve a list of all posts.        | `{"posts": [{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}]}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/posts`  | Retrieve a list of all posts.        | `{"posts": [{"body": "string", "comments": [], "createdAt": "string", "id": int, "title": "string", "topicId": int, "updatedAt": "string", "userId": int}]}` |
 
 ### Get single post
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `GET /api/posts/:id` | Retrieve information about a single post by its ID. | `{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `GET /api/posts/:id` | Retrieve information about a single post by its ID. | `{"body": "string", "comments": [], "createdAt": "string", "id": int, "title": "string", "topicId": int, "updatedAt": "string", "userId": int}` |
 
 ### Create a post
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `POST /api/posts/new` | Create a new post.                  | `{"body": "Sample body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Sample Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `POST /api/posts/new` | Create a new post.                  | `{"body": "string", "comments": [], "createdAt": "string", "id": int, "title": "string", "topicId": int, "updatedAt": "string", "userId": int}` |
 
 ### Edit a post
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `PUT /api/posts/edit/:id` | Edit an existing post.          | `{"body": "Updated body", "comments": [], "createdAt": "2023-09-17T12:00:00Z", "id": 1, "title": "Updated Title", "topicId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `PUT /api/posts/edit/:id` | Edit an existing post.          | `{"body": "string", "comments": [], "createdAt": "string", "id": int, "title": "string", "topicId": int, "updatedAt": "string", "userId": int}` |
 
 ### Delete a post
 
-| Request           | Purpose                              | Response                                |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| `DELETE /api/posts/:id` | Delete a post by its ID.         | `{"message": "Post deleted"}` |
+| Request           | Purpose                              | Response                                          |
+| ----------------- | ------------------------------------ | ------------------------------------------------- |
+| `DELETE /api/posts/:id` | Delete a post by its ID.         | `{"message": "string"}` |
 
 ## COMMENTS
 
 ### Get all comments
 
-| Request                | Purpose                                      | Response                                |
-| ---------------------- | -------------------------------------------- | --------------------------------------- |
-| `GET /api/comments`    | Retrieve a list of all comments.             | `{"comments": [{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}]}` |
+| Request                | Purpose                                      | Response                                          |
+| ---------------------- | -------------------------------------------- | ------------------------------------------------- |
+| `GET /api/comments`    | Retrieve a list of all comments.             | `{"comments": [{"comment": "string", "createdAt": "string", "id": int, "postId": int, "updatedAt": "string", "userId": int}]}` |
 
 ### Get single comment
 
-| Request                | Purpose                                      | Response                                |
-| ---------------------- | -------------------------------------------- | --------------------------------------- |
-| `GET /api/comments/:id` | Retrieve information about a single comment by its ID. | `{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request                | Purpose                                      | Response                                          |
+| ---------------------- | -------------------------------------------- | ------------------------------------------------- |
+| `GET /api/comments/:id` | Retrieve information about a single comment by its ID. | `{"comment": "string", "createdAt": "string", "id": int, "postId": int, "updatedAt": "string", "userId": int}` |
 
 ### Create a comment
 
-| Request                | Purpose                                      | Response                                |
-| ---------------------- | -------------------------------------------- | --------------------------------------- |
-| `POST /api/comments/new` | Create a new comment.                       | `{"comment": "Sample Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request                | Purpose                                      | Response                                          |
+| ---------------------- | -------------------------------------------- | ------------------------------------------------- |
+| `POST /api/comments/new` | Create a new comment.                       | `{"comment": "string", "createdAt": "string", "id": int, "postId": int, "updatedAt": "string", "userId": int}` |
 
 ### Edit a comment
 
-| Request                | Purpose                                      | Response                                |
-| ---------------------- | -------------------------------------------- | --------------------------------------- |
-| `PUT /api/comments/edit/:id` | Edit an existing comment.              | `{"comment": "Updated Comment", "createdAt": "2023-09-17T12:00:00Z", "id": 1, "postId": 1, "updatedAt": "2023-09-17T12:00:00Z", "userId": 2}` |
+| Request                | Purpose                                      | Response                                          |
+| ---------------------- | -------------------------------------------- | ------------------------------------------------- |
+| `PUT /api/comments/edit/:id` | Edit an existing comment.              | `{"comment": "string", "createdAt": "string", "id": int, "postId": int, "updatedAt": "string", "userId": int}` |
 
 ### Delete a comment
 
-| Request                | Purpose                                      | Response                                |
-| ---------------------- | -------------------------------------------- | --------------------------------------- |
-| `DELETE /api/comments/:id` | Delete a comment by its ID.             | `{"message": "Comment deleted"}` |
+| Request                | Purpose                                      | Response                                          |
+| ---------------------- | -------------------------------------------- | ------------------------------------------------- |
+| `DELETE /api/comments/:id` | Delete a comment by its ID.             | `{"message": "string"}` |
 
 # Feature List
 1. User Accounts
