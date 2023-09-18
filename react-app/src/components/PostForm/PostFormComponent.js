@@ -76,13 +76,6 @@ function PostComponent(){
     dispatchTopics();
   }, [dispatch])
 
-  //loggers
-  useEffect(()=>{console.log(topics)}, [topics])
-  useEffect(()=>{console.log("Title",title)}, [title])
-  useEffect(()=>{console.log("Body",body)}, [body])
-  useEffect(()=>{console.log("TopicId",topicId)}, [topicId])
-
-
   async function submitHandler(e){
     e.preventDefault();
     let errObj = {};
@@ -116,7 +109,6 @@ function PostComponent(){
       }
       res = await dispatch(createPostThunk(reqBody))
     }
-    console.log(res);
     history.push(`/post/${res.id}`)
   };
 

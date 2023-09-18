@@ -85,11 +85,6 @@ function SinglePostComponent(){
     setNewComment("")
   }
 
-  //Logger
-  useEffect(()=>{
-    console.log(newComment)
-  }, [newComment])
-
   return (
     <React.Fragment>
       <NavLink to="/">{`<`}Back</NavLink>

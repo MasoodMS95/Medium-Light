@@ -46,7 +46,6 @@ export const createPostThunk = (req) => async (dispatch) =>{
 		},
     body: JSON.stringify(req),
   })
-  console.log(res);
   if(res.ok){
     let data = await res.json();
     dispatch(getSinglePost(data))

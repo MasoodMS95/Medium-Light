@@ -20,10 +20,6 @@ function LoginFormPage() {
     }
   };
 
-  useEffect(()=>{
-    console.log(errors)
-  }, [errors])
-
   const demoLogin = async (e) =>{
     e.preventDefault();
     await dispatch(login('demo@aa.io', 'password'));
