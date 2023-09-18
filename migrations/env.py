@@ -4,6 +4,11 @@ import logging
 from logging.config import fileConfig
 
 from flask import current_app
+config.set_main_option(
+    'sqlalchemy.url',
+    str(current_app.extensions['migrate'].db.get_engine().url).replace('%', '%%'))
+target_metadata = current_app.extensions['migrate'].db.metadata
+
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
