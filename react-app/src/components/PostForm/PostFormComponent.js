@@ -62,7 +62,7 @@ function PostComponent(){
 
   useEffect(()=>{
     if(!user){
-      window.alert("You need to be logged in to make a post")
+      window.alert("You need to be logged in to make or edit a post")
       history.push("/")
     }
   }, [user])
