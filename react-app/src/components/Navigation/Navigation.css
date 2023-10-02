@@ -28,8 +28,16 @@
   display: flex;
 }
 
+.leftNav:hover{
+  cursor: pointer;
+}
+
 .rightNav{
   column-gap: 10px;
+}
+
+.navBarLoggedOut{
+  background-color: orange;
 }
 
 .clearButton{

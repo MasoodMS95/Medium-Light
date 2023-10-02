@@ -12,11 +12,9 @@ function Navigation({ isLoaded }){
   const history = useHistory();
 
   return (
-    <div className="navBar">
+    <div className={sessionUser ? 'navBar' : 'navBar navBarLoggedOut'}>
       <div className={sessionUser ? "loggedIn leftNav" : "loggedOut leftNav"}>
-        <NavLink exact to="/">
-          <img src={logoImg} id="logoImage" alt="Logo" />
-        </NavLink>
+        <img src={logoImg} id="logoImage" alt="Logo" />
         <span id="siteName">Medium Light</span>
         {isLoaded && sessionUser && (
           <div className='searchBar'>
