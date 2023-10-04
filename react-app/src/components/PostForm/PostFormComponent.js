@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { createPostThunk, editPostThunk, getSinglePostThunk } from "../../store/post";
 import "./PostFormComponent.css"
 
-function PostComponent(){
+function PostFormComponent(){
   const [isEdit, setIsEdit] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -164,4 +164,4 @@ function PostComponent(){
   )
 }
 
-export default PostComponent;
+export default PostFormComponent;

@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage"
-import PostComponent from "./components/PostForm/PostFormComponent";
+import PostFormComponent from "./components/PostForm/PostFormComponent";
 import SinglePostComponent from "./components/SinglePostPage/SinglePostComponent";
 import PageNotFound from "./components/PageNotFound/PageNotFOund";
 import SearchResult from "./components/SearchResultPage";
@@ -30,10 +30,10 @@ function App() {
             <SearchResult />
           </Route>
           <Route exact path='/post/new'>
-            <PostComponent />
+            <PostFormComponent />
           </Route>
           <Route exact path='/post/edit/:id'>
-            <PostComponent />
+            <PostFormComponent />
           </Route>
           <Route exact path="/post/:id">
             <SinglePostComponent />
