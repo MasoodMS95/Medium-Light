@@ -1,5 +1,6 @@
 .profile-dropdown {
   align-items: flex-start;
+  background-color: white;
   border: solid 1px black;
   display: flex;
   flex-direction: column;
@@ -40,6 +41,9 @@
 }
 
 .navBarLoggedIn{
+  background-color: white;
+  padding-bottom: 3px;
+  border-bottom: solid black 1px;
   margin-top: 2px;
 }
 

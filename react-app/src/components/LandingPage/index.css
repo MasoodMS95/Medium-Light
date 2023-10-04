@@ -12,3 +12,13 @@
 .postBox:hover{
   cursor: pointer;
 }
+
+.postBox h3 {
+  font-family: 'Dela Gothic One', cursive;
+  font-weight: normal;
+}
+
+.postBox p{
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+}
