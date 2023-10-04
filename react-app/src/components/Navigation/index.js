@@ -25,11 +25,16 @@ function Navigation({ isLoaded }){
             value={searchField}
             onChange={(e)=>setSearchField(e.target.value)}
             onKeyDown={(event)=> {
+              //On enter
               if(event.key==='Enter'){
+                //Do nothing if search box is empty
+                if(searchField === ""){
+                  return;
+                }
                 history.push(`/search/${searchField}`);
                 setSearchField("");
               }
-            }} placeholder='Search Medium Light'></input>
+            }} placeholder='Search posts'></input>
           </div>
         )}
       </div>
