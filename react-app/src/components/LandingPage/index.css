@@ -5,12 +5,17 @@
   width: 60%;
 }
 
+.allPosts h2{
+  text-shadow: 1px 1px 2px pink;
+}
+
 .postBox{
   border-top: 1px solid black;
 }
 
 .postBox:hover{
   cursor: pointer;
+  box-shadow: 10px 5px 5px black;
 }
 
 .postBox h3 {

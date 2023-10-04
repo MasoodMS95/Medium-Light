@@ -25,11 +25,15 @@
 }
 
 .postActionButtons button{
-  background-color: white;
+  background-color: transparent;
   border: none;
-  cursor: pointer;
 }
 
+.postActionButtons button:hover{
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
 .newCommentBox{
   border-bottom: solid black 1px;
   border-top: solid black 1px;
@@ -69,7 +73,7 @@
 }
 
 .commentActions button{
-  background-color: white;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
