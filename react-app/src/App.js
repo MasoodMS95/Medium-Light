@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage"
 import PostComponent from "./components/PostForm/PostFormComponent";
 import SinglePostComponent from "./components/SinglePostPage/SinglePostComponent";
 import PageNotFound from "./components/PageNotFound/PageNotFOund";
+import SearchResult from "./components/SearchResultPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route exact path='/search/:term'>
+            <SearchResult />
           </Route>
           <Route exact path='/post/new'>
             <PostComponent />
