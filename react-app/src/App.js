@@ -10,6 +10,7 @@ import PostFormComponent from "./components/PostForm/PostFormComponent";
 import SinglePostComponent from "./components/SinglePostPage/SinglePostComponent";
 import PageNotFound from "./components/PageNotFound/PageNotFOund";
 import SearchResult from "./components/SearchResultPage";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

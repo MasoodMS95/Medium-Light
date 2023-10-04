@@ -1,0 +1,16 @@
+.footerContainer{
+  align-items: center;
+
+  background-color: rgb(31, 172, 253);
+  display: flex;
+  justify-content: space-between;
+
+  padding: 20px 0px;
+  position: relative;
+  width: 100%;
+}
+
+
+.copyrightBox{
+  margin-right: 10px;
+}

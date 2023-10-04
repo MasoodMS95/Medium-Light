@@ -8,6 +8,11 @@ p.errors{
 }
 
 body{
+  background: linear-gradient(rgb(199, 255, 241), rgb(202, 255, 141));
   box-sizing: border-box;
+  /* display: flex;
+  height: 100vh;
+  flex-direction: column; */
   margin: 0px;
+  min-height: 100vh;
 }
