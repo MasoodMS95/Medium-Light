@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPostsThunk } from '../../store/post';
 import { useHistory } from 'react-router-dom';
 import "./index.css"
+import { postSorter } from '../../helper';
 
 function LandingPage(){
   const sessionUser = useSelector(state => state.session.user);
@@ -13,19 +14,13 @@ function LandingPage(){
   const dispatch = useDispatch();
   const postLength = 300;
 
-  const sortedPosts = (a, b) => {
-    const dateA = new Date(a.updatedAt);
-    const dateB = new Date(b.updatedAt);
-    return dateB - dateA;
-  };
-
   useEffect(()=>{
     dispatch(getAllPostsThunk());
   }, [dispatch])
 
   useEffect(()=>{
     if(posts.length > 0){
-      let sorted = posts.sort(sortedPosts);
+      let sorted = posts.sort(postSorter);
       setLatestPosts(sorted)
       setIsPostsLoaded(true);
     }
