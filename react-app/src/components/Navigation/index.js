@@ -12,10 +12,12 @@ function Navigation({ isLoaded }){
   const history = useHistory();
 
   return (
-    <div className={sessionUser ? 'navBar' : 'navBar navBarLoggedOut'}>
+    <div className={sessionUser ? 'navBar navBarLoggedIn' : 'navBar navBarLoggedOut'}>
       <div className={sessionUser ? "loggedIn leftNav" : "loggedOut leftNav"}>
-        <img src={logoImg} id="logoImage" alt="Logo" />
-        <span id="siteName">Medium Light</span>
+        <div id="flagShip" onClick={()=>history.push("/")}>
+          <img src={logoImg} id={sessionUser?"logoImage":"loggedOutLogoImage"} alt="Logo" />
+          <span id={sessionUser?"siteName":"loggedOutSiteName"}>Medium Light</span>
+        </div>
         {isLoaded && sessionUser && (
           <div className='searchBar'>
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -24,7 +26,7 @@ function Navigation({ isLoaded }){
             onChange={(e)=>setSearchField(e.target.value)}
             onKeyDown={(event)=> {
               if(event.key==='Enter'){
-                window.alert("Feature coming soon.");
+                history.push(`/search/${searchField}`);
                 setSearchField("");
               }
             }} placeholder='Search Medium Light'></input>
@@ -34,9 +36,9 @@ function Navigation({ isLoaded }){
       <div className={sessionUser ? "loggedIn rightNav" : "loggedOut rightNav"}>
         {isLoaded && !sessionUser && (
           <>
-            <button className='clearButton' onClick={()=>{window.alert("Feature coming soon.")}}>Our story</button>
-            <button className='clearButton' onClick={()=>{window.alert("Feature coming soon.")}}>Membership</button>
-            <button className='clearButton' onClick={()=>history.push('/login')}>Write</button>
+            <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Our story</button>
+            <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Membership</button>
+            <button className='orangeButton' onClick={()=>history.push('/login')}>Write</button>
           </>
         )}
         {isLoaded && sessionUser && (
@@ -47,8 +49,8 @@ function Navigation({ isLoaded }){
         )}
         {isLoaded && !sessionUser && (
           <React.Fragment>
-            <button className='clearButton' onClick={()=>history.push('/login')}>Log in</button>
-            <button className='clearButton' onClick={()=>history.push('/signup')}>Sign up</button>
+            <button className='orangeButton' onClick={()=>history.push('/login')}>Log in</button>
+            <button className='orangeButton' onClick={()=>history.push('/signup')}>Sign up</button>
           </React.Fragment>
         )}
       </div>

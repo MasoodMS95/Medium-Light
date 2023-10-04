@@ -28,16 +28,26 @@
   display: flex;
 }
 
-.leftNav:hover{
-  cursor: pointer;
-}
-
 .rightNav{
+
   column-gap: 10px;
 }
 
 .navBarLoggedOut{
+  height: 80px;
   background-color: orange;
+  justify-content: space-around;
+}
+
+.navBarLoggedIn{
+  margin-top: 2px;
+}
+
+.orangeButton{
+  font-size: 18px;
+  background-color: orange;
+  border: none;
+  cursor: pointer;
 }
 
 .clearButton{
@@ -46,7 +56,7 @@
   cursor: pointer;
 }
 
-.clearButton:hover{
+.clearButton:hover, .orangeButton:hover{
   font-weight: bold;
   text-decoration: underline;
 }
@@ -68,6 +78,11 @@
 #logoImage{
   height:20px;
   width: 30px;
+}
+
+#loggedOutLogoImage{
+  height: 30px;
+  width: auto;
 }
 
 .profileButtons{
@@ -92,4 +107,24 @@
   font-size: 18px;
   margin-left:5px;
   margin-right:10px;
+}
+
+#loggedOutSiteName{
+  font-size: 28px;
+  margin-left:5px;
+  margin-right:10px;
+}
+
+.navBarLoggedOut img{
+  height: 2000px;
+}
+
+#flagShip{
+  align-items: center;
+  display: flex;
+}
+
+#flagShip:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
