@@ -27,10 +27,6 @@ function Navigation({ isLoaded }){
             onKeyDown={(event)=> {
               //On enter
               if(event.key==='Enter'){
-                //Do nothing if search box is empty
-                if(searchField === ""){
-                  return;
-                }
                 history.push(`/search/${searchField}`);
                 setSearchField("");
               }

@@ -9,10 +9,16 @@ function SearchResult(){
   const [isPostsLoaded, setIsPostsLoaded] = useState(false);
   const posts = useSelector(state => state.post.allPosts)
   const {term} = useParams();
-  const history = useHistory
+  const history = useHistory();
   const dispatch = useDispatch();
   const postLength = 300;
   const regex = new RegExp(`.*${term}.*`, 'gi');
+
+  useEffect(()=>{
+    if(term === "" || term === undefined){
+      history.push("/")
+    }
+  }, [term])
 
   useEffect(()=>{
     dispatch(getAllPostsThunk());
@@ -25,14 +31,9 @@ function SearchResult(){
       console.log(searchedPosts)
       let sorted = searchedPosts.sort(postSorter);
       setSRPosts(sorted);
-    }
-  }, [posts, term])
-
-  useEffect(()=>{
-    if(srPosts.length>0){
       setIsPostsLoaded(true);
     }
-  }, [srPosts])
+  }, [posts, term])
 
   return (
     <React.Fragment>

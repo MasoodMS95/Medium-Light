@@ -30,6 +30,9 @@ function App() {
           <Route exact path='/search/:term'>
             <SearchResult />
           </Route>
+          <Route exact path='/search'>
+            <SearchResult />
+          </Route>
           <Route exact path='/post/new'>
             <PostFormComponent />
           </Route>
