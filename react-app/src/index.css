@@ -44,5 +44,6 @@ body{
 }
 
 .copyrightBox h2{
+  font-family: 'Signika Negative', sans-serif;
   text-shadow: 1px 1px 2px pink;
 }

@@ -5,14 +5,15 @@
   margin: auto;
   row-gap: 20px;
   width: 40%;
+  text-align: center;
+}
+
+.postForm>h2{
+  text-shadow: 1px 1px 2px pink;
 }
 
 .postForm p{
   margin:0px;
-}
-
-.postForm{
-  text-align: center;
 }
 
 .postForm textarea{

@@ -41,8 +41,8 @@ function Navigation({ isLoaded }){
       <div className={sessionUser ? "loggedIn rightNav" : "loggedOut rightNav"}>
         {isLoaded && !sessionUser && (
           <>
-            <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Our story</button>
-            <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Membership</button>
+            {/* <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Our story</button> */}
+            {/* <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Membership</button> */}
             <button className='orangeButton' onClick={()=>history.push('/login')}>Write</button>
           </>
         )}

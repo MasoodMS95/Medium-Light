@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
           <>
             <div className="profileButtonsTop profileButtons">
               <span>{user.email}</span>
-              <button onClick={() => {window.alert("Feature coming soon.")}}>
+              {/* <button onClick={() => {window.alert("Feature coming soon.")}}>
                 <i className="fa-regular fa-user icon"></i>
                 Profile
               </button>
@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
               <button onClick={() => {window.alert("Feature coming soon.")}}>
                 <i className="fa-solid fa-chart-simple icon"></i>
                 Stats
-              </button>
+              </button> */}
             </div>
             <div className="profileButtonsMid profileButtons">
 
