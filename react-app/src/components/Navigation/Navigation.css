@@ -8,7 +8,8 @@
   padding-left: 10px;
   position: absolute;
   right: 8px;
-  top: 20px;
+  /* 20px top for full list */
+  top: 5px;
 }
 
 .icon{
@@ -41,10 +42,8 @@
 }
 
 .navBarLoggedIn{
-  background-color: white;
-  padding-bottom: 3px;
+  background: linear-gradient(rgb(255, 246, 236), rgba(201, 241, 251, 0.815));
   border-bottom: solid black 1px;
-  margin-top: 2px;
 }
 
 .orangeButton{
@@ -67,6 +66,7 @@
 
 .searchBar{
   align-items: center;
+  background-color: white;
   border: solid 1px black;
   border-radius: 10px;
   display: flex;
@@ -75,6 +75,7 @@
 }
 
 .searchBar>input{
+  background: transparent;
   border: none;
   outline: none
 }
