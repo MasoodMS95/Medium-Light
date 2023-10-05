@@ -26,9 +26,7 @@ function SearchResult(){
 
   useEffect(()=>{
     if(posts.length > 0){
-      console.log("TERM", term)
       const searchedPosts = posts.filter((post) => post?.title?.match(regex));
-      console.log(searchedPosts)
       let sorted = searchedPosts.sort(postSorter);
       setSRPosts(sorted);
       setIsPostsLoaded(true);
