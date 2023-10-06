@@ -18,6 +18,7 @@ class Post(db.Model):
 
     users = db.relationship("User", back_populates="posts")
     topics = db.relationship("Topic", back_populates="posts")
+    votes = db.relationship("Vote", back_populates="posts", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="posts", cascade="all, delete-orphan")
 
     def to_dict(self):
@@ -29,5 +30,6 @@ class Post(db.Model):
           'topicId':self.topicId,
           'createdAt': self.created_at,
           'updatedAt': self.updated_at,
-          'comments': [comment.to_dict() for comment in self.comments]
+          'comments': [comment.to_dict() for comment in self.comments],
+          'votes': [vote.to_dict() for vote in self.votes]
         }
