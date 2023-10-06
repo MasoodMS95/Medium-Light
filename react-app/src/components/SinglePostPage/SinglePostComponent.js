@@ -8,9 +8,11 @@ import DeletePost from "../DeletePostModal/DeletePost";
 import "./SinglePostComponent.css"
 import EditComment from "../commentActions/EditCommentModal";
 import DeleteComment from "../commentActions/DeleteCommentModal";
+import { clearSingleVote, createVoteThunk, editVoteThunk, getVoteThunk } from "../../store/vote";
 
 function SinglePostComponent(){
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isPostLoaded, setPostIsLoaded] = useState(false);
+  const [isVoteLoaded, setIsVoteLoaded] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [commentError, setCommentError] = useState({})
   const [sortedComments, setSortedComments] = useState([]);
@@ -18,6 +20,7 @@ function SinglePostComponent(){
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const post = useSelector(state => state.post.singlePost);
+  const vote = useSelector(state => state.singleVote);
   const history = useHistory();
   const {id} = useParams();
   const { closeModal } = useModal();
@@ -30,11 +33,12 @@ function SinglePostComponent(){
         window.alert(res.error);
         history.push("/");
       }
-      setIsLoaded(true);
+      setPostIsLoaded(true);
     }
     getPostDetails();
   }, [dispatch])
 
+  //Sort the comments
   useEffect(()=>{
     if(post?.comments.length>0){
       let sorted = post.comments.sort(sortComments);
@@ -52,6 +56,27 @@ function SinglePostComponent(){
     const dateB = new Date(b.updatedAt);
     return dateB - dateA;
   };
+
+  //Update vote if user logs out or looking at new post
+  useEffect(()=>{
+    const handleVote = async() => {
+      if(!user){
+        await dispatch(clearSingleVote())
+        setIsVoteLoaded(true);
+        return;
+      }
+      let vote = post?.votes?.filter(vote => vote.userId === user.id)[0];
+      if(vote){
+        await dispatch(getVoteThunk(vote.id));
+      }
+      else{
+        await dispatch(clearSingleVote());
+      }
+      setIsVoteLoaded(true);
+      return;
+    }
+    handleVote();
+  }, [post, user, dispatch])
 
 
   //Submit handler for new comment
@@ -85,25 +110,67 @@ function SinglePostComponent(){
     setNewComment("")
   }
 
+  const voteSubmit = async (like) => {
+    if(!user){
+      window.alert("Sign up to vote!");
+      return;
+    }
+    if(vote){
+      if(vote.vote === like){
+        return;
+      }
+      else{
+        console.log('editting');
+        await dispatch(editVoteThunk({"vote": like}, vote.id))
+        dispatch(getSinglePostThunk(post?.id))
+        return;
+      }
+    }
+    console.log('creating');
+    await dispatch(createVoteThunk({
+      userId:user.id,
+      postId:post.id,
+      "vote":like
+    }))
+    dispatch(getSinglePostThunk(post?.id))
+    return;
+  }
+
   return (
     <React.Fragment>
       <NavLink to="/">{`<`}Back</NavLink>
-      {isLoaded && (
+      {isPostLoaded && isVoteLoaded && (
         <div className="singlePost">
           <div className="postHeader">
             <h2>{post.title}</h2>
             <h3>By {post?.ownersUserName}</h3>
             <p>{post.body}</p>
-            {post?.userId === user?.id &&
-              <div className="postActionButtons">
-                <button onClick={() => history.push(`/post/edit/${post.id}`)} className='clearButton'>EDIT</button>
-                <OpenModalButton
-                  buttonText="DELETE"
-                  onItemClick={closeModal}
-                  modalComponent={<DeletePost id={post?.id}/>}
-                />
+            <div className="postActionButtons">
+              <div className="votingButtons">
+                <span className='voteButton' onClick={()=>voteSubmit(true)}>
+                  {`${post?.votes?.filter(vote=>vote.vote === true).length} `}
+                  {vote?.vote === true && <i class="fa-solid fa-thumbs-up"></i>}
+                  {(vote?.vote === false || !vote) && <i class="fa-regular fa-thumbs-up"></i>}
+                </span>
+                <span className='voteButton' onClick={()=>voteSubmit(false)}>
+                  {`${post?.votes?.filter(vote=>vote.vote === false).length} `}
+                  {vote?.vote === false && <i className="fa-solid fa-thumbs-down"></i>}
+                  {(vote?.vote === true || !vote) && <i class="fa-regular fa-thumbs-down"></i>}
+                </span>
               </div>
-            }
+              <div className="modificationButtons">
+                {user?.id === post.userId && (
+                  <>
+                    <button onClick={() => history.push(`/post/edit/${post.id}`)} className='clearButton'>EDIT</button>
+                    <OpenModalButton
+                      buttonText="DELETE"
+                      onItemClick={closeModal}
+                      modalComponent={<DeletePost id={post?.id}/>}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
           </div>
           <div className="commentsBox">
             <h3>Comments</h3>

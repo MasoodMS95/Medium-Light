@@ -24,7 +24,7 @@
 
 .postActionButtons{
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .postActionButtons button{
@@ -36,6 +36,11 @@
   cursor: pointer;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.votingButtons{
+  column-gap: 10px;
+  display: flex
 }
 
 .newCommentBox{

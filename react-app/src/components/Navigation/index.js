@@ -39,7 +39,7 @@ function Navigation({ isLoaded }){
           <>
             {/* <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Our story</button> */}
             {/* <button className='orangeButton' onClick={()=>{window.alert("Feature coming soon.")}}>Membership</button> */}
-            <button className='orangeButton' onClick={()=>history.push('/login')}>Write</button>
+            <button className='clearButtonLarge' onClick={()=>history.push('/login')}>Write</button>
           </>
         )}
         {isLoaded && sessionUser && (
@@ -50,8 +50,8 @@ function Navigation({ isLoaded }){
         )}
         {isLoaded && !sessionUser && (
           <React.Fragment>
-            <button className='orangeButton' onClick={()=>history.push('/login')}>Log in</button>
-            <button className='orangeButton' onClick={()=>history.push('/signup')}>Sign up</button>
+            <button className='clearButtonLarge' onClick={()=>history.push('/login')}>Log in</button>
+            <button className='clearButtonLarge' onClick={()=>history.push('/signup')}>Sign up</button>
           </React.Fragment>
         )}
       </div>
