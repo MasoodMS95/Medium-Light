@@ -58,7 +58,7 @@ function EditComment({commentId, postId}){
       ></textarea>
       {<p>{editedComment.length} character(s)</p>}
       {commentError.comment && <p className="errors">Comment is required and must be less than 255 characters.</p>}
-      <button className="clearButton">Submit</button>
+      <button className="submitButton">Submit</button>
    </form>
   )
 }
