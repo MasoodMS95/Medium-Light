@@ -2,4 +2,4 @@ from .login_form import LoginForm
 from .signup_form import SignUpForm
 from .post_forms import newPostForm, editPostForm
 from .comment_form import newCommentForm, editCommentForm
-from .vote_form import voteForm
+from .vote_form import newVoteForm, editVoteForm

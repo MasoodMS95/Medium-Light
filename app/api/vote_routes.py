@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Post, Vote, db
-from ..forms import voteForm
+from ..forms import newVoteForm, editVoteForm
 
 vote_routes = Blueprint('votes', __name__)
 
@@ -22,7 +22,7 @@ def createNewVote():
   Creates a new vote.
   """
   request_data=request.get_json()
-  form = voteForm()
+  form = newVoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
   if form.validate_on_submit():
@@ -40,20 +40,18 @@ def createNewVote():
   return {"errors":form.errors}, 401
 
 
-@vote_routes.route('/edit', methods=["PUT"])
-def editVote():
+@vote_routes.route('/edit/<int:id>', methods=["PUT"])
+def editVote(id):
   """
   Edits a vote.
   """
   request_data=request.get_json()
-  form = voteForm()
+  form = editVoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
   if form.validate_on_submit():
-    voteToEdit = Vote.query.filter_by(userId=data['userId'], postId=data['postId']).first()
+    voteToEdit = Vote.query.get(id)
     if voteToEdit:
-      voteToEdit.postId = data['postId']
-      voteToEdit.userId = data['userId']
       voteToEdit.vote = data['vote']
       db.session.commit()
       return voteToEdit.to_dict()
