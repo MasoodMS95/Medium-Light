@@ -53,7 +53,6 @@ export const editVoteThunk = (vote, id) => async (dispatch) => {
   }
   else{
     let err = await res.json();
-    console.log("ERROR", err);
   }
 }
 

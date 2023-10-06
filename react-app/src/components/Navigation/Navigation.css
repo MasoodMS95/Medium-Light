@@ -55,8 +55,10 @@
   cursor: pointer;
 }
 
+/* TODO: not so clear anymore, need to update name */
 .clearButton{
   border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 

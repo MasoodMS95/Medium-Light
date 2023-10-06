@@ -157,7 +157,7 @@ function PostFormComponent(){
             {errors.topic && <p className="errors">Topic must be selected</p>}
            </div>
           )}
-          <button className="clearButton">Submit</button>
+          <button className="submitButton">Submit</button>
         </form>
       )}
     </React.Fragment>

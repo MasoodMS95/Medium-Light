@@ -43,8 +43,11 @@
   display: flex
 }
 
+.voteButton:hover{
+  cursor: pointer;
+}
+
 .newCommentBox{
-  border-bottom: solid black 1px;
   border-top: solid black 1px;
   display: flex;
   flex-direction: column;
@@ -66,8 +69,16 @@
   margin-bottom:0px;
 }
 
+/* .newCommentBox button{
+  margin:auto;
+  background: rgba(201, 241, 251, 0.815);
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+} */
+
 .comment{
-  border-bottom:1px solid black;
+  border-top:1px solid black;
   padding-bottom: 10px;
 }
 

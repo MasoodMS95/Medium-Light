@@ -120,13 +120,11 @@ function SinglePostComponent(){
         return;
       }
       else{
-        console.log('editting');
         await dispatch(editVoteThunk({"vote": like}, vote.id))
         dispatch(getSinglePostThunk(post?.id))
         return;
       }
     }
-    console.log('creating');
     await dispatch(createVoteThunk({
       userId:user.id,
       postId:post.id,
@@ -184,7 +182,7 @@ function SinglePostComponent(){
                 ></textarea>
                 {<p>{newComment.length} character(s)</p>}
                 {commentError.comment && <p className="errors">Comment is required and must be less than 255 characters.</p>}
-                <button className="clearButton">Submit</button>
+                <button className='submitButton'>Submit</button>
               </form>
             )}
             {isCommentsSorted && sortedComments.map(comment => (
