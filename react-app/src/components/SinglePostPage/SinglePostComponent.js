@@ -110,7 +110,8 @@ function SinglePostComponent(){
     setNewComment("")
   }
 
-  const voteSubmit = async (like) => {
+  //Vote submit handler
+  const submitVote = async (like) => {
     if(!user){
       window.alert("Sign up to vote!");
       return;
@@ -145,12 +146,12 @@ function SinglePostComponent(){
             <p>{post.body}</p>
             <div className="postActionButtons">
               <div className="votingButtons">
-                <span className='voteButton' onClick={()=>voteSubmit(true)}>
+                <span className='voteButton' onClick={()=>submitVote(true)}>
                   {`${post?.votes?.filter(vote=>vote.vote === true).length} `}
                   {vote?.vote === true && <i class="fa-solid fa-thumbs-up"></i>}
                   {(vote?.vote === false || !vote) && <i class="fa-regular fa-thumbs-up"></i>}
                 </span>
-                <span className='voteButton' onClick={()=>voteSubmit(false)}>
+                <span className='voteButton' onClick={()=>submitVote(false)}>
                   {`${post?.votes?.filter(vote=>vote.vote === false).length} `}
                   {vote?.vote === false && <i className="fa-solid fa-thumbs-down"></i>}
                   {(vote?.vote === true || !vote) && <i class="fa-regular fa-thumbs-down"></i>}

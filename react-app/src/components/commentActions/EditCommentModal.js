@@ -40,7 +40,6 @@ function EditComment({commentId, postId}){
     })
     if(res.ok){
       closeModal();
-      window.alert("Comment updated!")
       dispatch(getSinglePostThunk(postId))
       return;
     }
