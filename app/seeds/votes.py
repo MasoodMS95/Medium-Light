@@ -10,17 +10,16 @@ def seed_votes():
 
   def generate_random_user_id():
       return random.randint(1, 3)
-
-  num_votes_to_generate = 150
+  posts = 30
+  users = 3
 
   votes_to_add = []
-  for _ in range(num_votes_to_generate):
-      postId = generate_random_post_id()
-      userId = generate_random_user_id()
-
+  uniqueSets = []
+  for uid in range (2, users+1):
+    for pid in range(1, posts+1):
       vote = Vote(
-          postId=postId,
-          userId=userId,
+          postId=pid,
+          userId=uid,
           vote=(random.randint(1,2)==1)
       )
       votes_to_add.append(vote)
