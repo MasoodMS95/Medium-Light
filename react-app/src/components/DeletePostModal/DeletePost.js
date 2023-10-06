@@ -16,7 +16,6 @@ function DeletePost({id}){
       return
     }
     closeModal();
-    window.alert("Post deleted!")
     history.push("/")
   }
   return(
